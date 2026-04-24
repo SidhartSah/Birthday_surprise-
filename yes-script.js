@@ -55,15 +55,15 @@ function launchConfetti() {
 }
 
 function toggleMusic() {
-    const music = document.getElementById('bg-music')
+v    const music = document.getElementById('bg-music')
     if (musicPlaying) {
         music.pause()
         musicPlaying = false
-        document.getElementById('music-toggle').textContent = ''
+        document.getElementById('music-toggle').textContent = '🔇'
     } else {
         music.play()
         musicPlaying = true
-        document.getElementById('music-toggle').textContent = ''
+        document.getElementById('music-toggle').textContent = '🔊'
     }
 }
 
