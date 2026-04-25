@@ -51,6 +51,38 @@ document.addEventListener('mousemove', (e) => {
         `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 });
     </script>
+    <script>
+const heartsContainer = document.querySelector('.hearts-bg');
+
+function createHeart() {
+    const heart = document.createElement('span');
+    
+    const emojis = ['💖','🎉','✨','🎂','💝','🎊'];
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    // random horizontal position
+    heart.style.left = Math.random() * 100 + 'vw';
+
+    // random size
+    heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+
+    // random duration
+    heart.style.animationDuration = (Math.random() * 6 + 8) + 's';
+
+    // random delay
+    heart.style.animationDelay = Math.random() * 5 + 's';
+
+    heartsContainer.appendChild(heart);
+
+    // remove after animation ends (cleanup)
+    setTimeout(() => {
+        heart.remove();
+    }, 15000);
+}
+
+// spawn continuously
+setInterval(createHeart, 500);
+    </script>
     
 </body>
 </html>
