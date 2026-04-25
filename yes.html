@@ -39,19 +39,7 @@
     </audio>
 
     <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">🔊</button>
-<script>
-window.onload = function () {
-    const music = document.getElementById("bg-music");
 
-    // Try autoplay (may fail silently)
-    music.play().catch(() => {});
-
-    // Guaranteed play on first tap
-    document.body.addEventListener("click", () => {
-        music.play().catch(() => {});
-    }, { once: true });
-};
-</script>
  
     <script src="yes-script.js"></script>
 </body>
