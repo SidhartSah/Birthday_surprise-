@@ -29,13 +29,14 @@ body {
 .hearts-bg span {
     position: absolute;
     font-size: 1.2rem;
-    opacity: 0.12;
+    opacity: 0.6;
     animation: floatRandom linear infinite;
 }
 
 /* Size variation */
 .hearts-bg span:nth-child(odd) {
     font-size: 1.8rem;
+    opacity: 0.04;
 }
 
 .hearts-bg span:nth-child(3n) {
@@ -65,12 +66,11 @@ body {
 .container {
     position: relative;
     z-index: 1;
-
+    border-top: 1px solid rgba(255,255,255,0.25);
     padding: 40px 30px;
     border-radius: 24px;
 
     /* glass base */
-    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 
@@ -86,6 +86,12 @@ body {
     transform-style: preserve-3d;
 will-change: transform;
 transition: transform 0.2s ease;
+background:
+    linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.18),
+        rgba(255,255,255,0.05)
+    );
 }
 
 .container::before {
@@ -173,20 +179,44 @@ h1 {
     background: linear-gradient(135deg, #ff758c, #ff7eb3);
     color: white;
     border: none;
-    border-radius: 30px;
-    padding: 15px 40px;
-    box-shadow: 0 10px 30px rgba(255, 118, 150, 0.4);
+    border-radius: 999px;
+    padding: 16px 44px;
 
     font-size: 1.3rem;
     font-weight: 800;
-    cursor: pointer;
+    letter-spacing: 0.5px;
 
-    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(255, 118, 150, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+
+    transition: all 0.25s ease;
+}
+#yes-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.5),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+#yes-btn:hover::before {
+    transform: translateX(100%);
 }
 
 #yes-btn:hover {
     transform: scale(1.08);
-    box-shadow: 0 10px 30px rgba(255, 118, 150, 0.5);
+    box-shadow: 0 15px 40px rgba(255, 118, 150, 0.6);
 }
 
 #yes-btn:active {
@@ -237,9 +267,8 @@ h1 {
     font-size: clamp(2.2rem, 5vw, 3rem);
 
     animation:
-    textReveal 1s ease forwards,
-    wiggle 2s ease-in-out infinite 1.5s,
-    glowPulse 1.5s ease-in-out infinite alternate 1.2s; 
+    textReveal 0.9s ease forwards,
+    glowPulse 2.5s ease-in-out infinite alternate 1s;
 }
 
 @keyframes bounceTitle {
@@ -307,3 +336,29 @@ h1 {
         transform: rotate(25deg) translateX(100%);
     }
 }
+.yes-title,
+#cat-gif,
+.yes-message {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.6s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes breathe {
+    from { transform: scale(1); }
+    to { transform: scale(1.01); }
+}
+.yes-message {
+    letter-spacing: 0.6px;
+    line-height: 1.6;
+    color: #ff9acb;
+}
+
