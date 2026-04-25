@@ -27,27 +27,52 @@ body {
     overflow: hidden;
 }
 
-.hearts-bg::before,
-.hearts-bg::after {
-    content: '✨ 🎉 💖 🎂 ✨';
+.hearts-bg span {
     position: absolute;
-    font-size: 1.5rem;
-    opacity: 0.15;
-    animation: floatHearts 12s linear infinite;
-    white-space: nowrap;
-    top: 100%;
-    left: 10%;
+    font-size: 1.2rem;
+    opacity: 0.12;
+    animation: floatRandom linear infinite;
 }
 
-.hearts-bg::after {
-    animation-delay: 6s;
-    left: 60%;
-    content: '   ';
+/* Size variation */
+.hearts-bg span:nth-child(odd) {
+    font-size: 1.8rem;
 }
 
-@keyframes floatHearts {
-    from { transform: translateY(0); opacity: 0.15; }
-    to { transform: translateY(-110vh); opacity: 0; }
+.hearts-bg span:nth-child(3n) {
+    font-size: 1.4rem;
+}
+
+/* Position + speed */
+.hearts-bg span:nth-child(1) { left: 5%; animation-duration: 12s; }
+.hearts-bg span:nth-child(2) { left: 15%; animation-duration: 10s; }
+.hearts-bg span:nth-child(3) { left: 25%; animation-duration: 14s; }
+.hearts-bg span:nth-child(4) { left: 35%; animation-duration: 11s; }
+.hearts-bg span:nth-child(5) { left: 50%; animation-duration: 13s; }
+.hearts-bg span:nth-child(6) { left: 65%; animation-duration: 9s; }
+.hearts-bg span:nth-child(7) { left: 75%; animation-duration: 15s; }
+.hearts-bg span:nth-child(8) { left: 85%; animation-duration: 10s; }
+.hearts-bg span:nth-child(9) { left: 95%; animation-duration: 12s; }
+.hearts-bg span:nth-child(10) { left: 45%; animation-duration: 11s; }
+
+/* Delay variation */
+.hearts-bg span:nth-child(odd) { animation-delay: 2s; }
+.hearts-bg span:nth-child(3n) { animation-delay: 5s; }
+
+/* Animation */
+@keyframes floatRandom {
+    0% {
+        transform: translateY(0) translateX(0) scale(0.9);
+        opacity: 0.15;
+    }
+    50% {
+        transform: translateY(-50vh) translateX(20px) scale(1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-110vh) translateX(-20px) scale(1.1);
+        opacity: 0;
+    }
 }
 
 .container {
@@ -182,9 +207,9 @@ h1 {
     font-size: clamp(2.2rem, 5vw, 3rem);
 
     animation:
-        textReveal 1s ease forwards,
-        bounceTitle 0.6s ease infinite alternate 1.2s,
-        glowPulse 1.5s ease-in-out infinite alternate 1.2s;
+    textReveal 1s ease forwards,
+    wiggle 2s ease-in-out infinite 1.5s,
+    glowPulse 1.5s ease-in-out infinite alternate 1.2s; 
 }
 
 @keyframes bounceTitle {
@@ -207,12 +232,12 @@ h1 {
 }
 
 .yes-container #cat-gif {
-    transition: transform.0.3s ease;
+    transition: transform 0.3s ease;
     width: 220px;
     margin: 20px 0;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 
-    animation: popin 0.8s ease 0.6s both;
+    animation: popIn 0.8s ease 0.6s both;
 }
 #cat-gif:hover {
     transform: scale(1.05);
@@ -233,7 +258,7 @@ h1 {
     0% { text-shadow: 0 0 10px rgba(255,150,180,0.3); }
     100% { text-shadow: 0 0 35px rgba(255,150,180,0.8); }
 }
-@keyframes popin {
+@keyframes popIn {
     0% {
         opacity: 0;
         transform: scale(0.6) rotate(-5deg);
