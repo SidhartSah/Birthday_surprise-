@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
 
     setTimeout(() => {
         launchConfetti();
-    }, 200);
+    }, 100);
 });
 
 function launchConfetti() {
