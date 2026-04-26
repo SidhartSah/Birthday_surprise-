@@ -32,16 +32,10 @@ window.addEventListener('load', () => {
 });
 
 function launchConfetti() {
-    const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#ffb3c1', '#fff', '#ffdf00'];
-    const duration = 5000;
+    const duration = 4000;
     const end = Date.now() + duration;
 
-    confetti({
-        particleCount: 90,
-        spread: 90,
-        origin: { x: 0.5, y: 0.3 },
-        colors
-    });
+    const isLowPower = window.innerWidth < 768;
 
     const interval = setInterval(() => {
         if (Date.now() > end) {
@@ -50,23 +44,17 @@ function launchConfetti() {
         }
 
         confetti({
-            particleCount: 25,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0, y: 0.6 },
-            colors
+            particleCount: isLowPower ? 10 : 20,
+            spread: 70,
+            origin: {
+                x: Math.random(),
+                y: Math.random() * 0.5
+            }
         });
 
-        confetti({
-            particleCount: 25,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1, y: 0.6 },
-            colors
-        });
-
-    }, 500);
+    }, 400);
 }
+
     function toggleMusic() {
     const music = document.getElementById('bg-music')
     if (musicPlaying) {
