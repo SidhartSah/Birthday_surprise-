@@ -17,4 +17,4 @@ An interactive web experience with animations, music, and surprise reveals.
 - Logic adjustments
 - UI improvements
 
-- https://SidhartSah-svg.github.io/Birthday_surprise-/
+- https://sidhartsah.github.io/Birthday_surprise-/
