@@ -14,7 +14,7 @@ body {
     transition: background 0.5s ease;
     background: radial-gradient(circle at 20% 30%, #ff9a9e22, transparent 40%),
             radial-gradient(circle at 80% 70%, #fad0c422, transparent 40%),
-            linear-gradient(135deg, #3ab2bd, #47a3bf, #b5e6f5);
+            linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
     color: white;
 }
 
